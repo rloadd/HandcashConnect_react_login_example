@@ -1,14 +1,6 @@
 import React from "react";
-import logo from '../media/logo.jpeg'; // Tell webpack this JS file uses this image
-
-// import { Button } from "@material-ui/core";
-
-
-const { HandCashConnect } = require("@handcash/handcash-connect");
-const AppId = "60b56ceef6663d0b5545baa8";
-export const handCashConnect = new HandCashConnect(AppId);
-// Use this field to redirect the user to the HandCash authorization screen.
-const redirectionLoginUrl = handCashConnect.getRedirectionUrl();
+import logo from '../media/logo.jpeg'; 
+import { handCashConnect } from "../helpers/utilities.js"
 
 export default function Auth() {
 
@@ -17,6 +9,7 @@ export default function Auth() {
   */
   const HandCashLogin = (e) => {
     e.preventDefault();
+    const redirectionLoginUrl = handCashConnect.getRedirectionUrl();
     window.location.href = redirectionLoginUrl;
   };
 
