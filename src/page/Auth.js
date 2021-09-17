@@ -5,7 +5,7 @@ import { handCashConnect } from "../helpers/utilities.js"
 export default function Auth() {
 
   /* 
-    Step 1.- Rrdirection to handcash connect URL for the user to give us authorization (link the app)
+    Step 1.- Redirection to handcash connect URL for the user to give us authorization (link the app)
   */
   const HandCashLogin = (e) => {
     e.preventDefault();
