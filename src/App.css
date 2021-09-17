@@ -1,0 +1,117 @@
+.App {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ------------------------------------- */
+/* CUSTOMIZATION FROM DEFAULT            */
+
+#spin {
+  margin-top: 40px;
+  justify-content: center;
+}
+
+#buttons {
+   margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* @charset "UTF-8"; */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+#connectButton {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0px 1px 3px hsla(0, 0%, 0%, 0.15);
+  background-image: linear-gradient(#38cb7c, #1cb462);
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 16px 24px;
+  text-decoration: none;
+  transition: 0.3s;
+  width: 100%;
+  max-width: 320px;
+  vertical-align: middle;
+  letter-spacing: 0.5px;
+}
+#connectButton:before {
+  background: url(https://handcash.io/resources/handcash_white_icon.svg)
+    no-repeat scroll center center / 100% auto rgba(0, 0, 0, 0);
+  content: "";
+  display: inline-block;
+  color: #fff;
+  height: 20px;
+  margin-right: 12px;
+  margin-bottom: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 20px;
+}
+#connectButton:hover {
+  background-image: linear-gradient(#31c475, #16b15d);
+  top: 1px;
+  box-shadow: 0px 3px 6px hsla(0, 0%, 0%, 0.15);
+}
+#connectButton:active {
+  background-image: linear-gradient(#38cb7c, #1cb462);
+  position: relative;
+  top: 1px;
+  box-shadow: 0px 0px 0px hsla(0, 0%, 0%, 0.15);
+}
+
+
+#resumen {
+  /*margin-left: 40px;*/
+  margin-top: 50px;
+  margin-left: 10px;
+  width:300px;
+
+  padding: 10px; 
+}
