@@ -8,7 +8,7 @@ Visit https://docs.handcash.dev/ for a full insight.
 
 ## About de functionality
 
-It is an example that ask a handcash user for an authorization and query their profile. For a little improvement, the session ramains in the browser thanks to the use of localStorage to store some data.
+It is an example that ask a handcash user for an authorization and query their profile. For a little improvement, the session remains in the browser thanks to the use of localStorage to store some data.
 
 ## Pre-requisites
 
