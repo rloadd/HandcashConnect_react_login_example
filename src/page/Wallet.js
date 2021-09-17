@@ -10,7 +10,7 @@ import {
 
 import { CircularProgress } from "@material-ui/core";
 
-class Options extends React.Component {
+class Wallet extends React.Component {
   constructor(props) {
     super(props);
     this.state = {     
@@ -67,4 +67,4 @@ class Options extends React.Component {
       );
     }
   }
-  export default Options;
+  export default Wallet;
