@@ -8,14 +8,14 @@ Visit https://docs.handcash.dev/ for a full insight.
 
 ## About de functionality
 
-It is an example that ask a handcash user for an authorization and query their profile. For a little improvement, the session remains in the browser thanks to the use of localStorage to store some data.
+This is an example that ask a handcash user for an authorization and query their profile. For a little improvement, the session remains in the browser thanks to the use of localStorage to store some data.
 
 ## Pre-requisites
 
-Follow [this instructions](https://docs.handcash.dev/authorization/) on how to get an AppId and to setup the pair of mandatory callbacks. Replace the AppId in the example with your own one.
+Follow [this instructions](https://docs.handcash.dev/authorization/) on how to get an **AppId** and to setup a pair of callbacks to integrate the app with HC. Replace the **AppId** in the example with your own one. It is needed just **profile** access (not payment auth, nothing more).
+
 
 ## How to run it
-
 
 In dev mode, 
 
