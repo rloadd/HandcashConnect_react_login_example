@@ -4,76 +4,67 @@ const { HandCashConnect } = require("@handcash/handcash-connect");
 const AppId = "60b56ceef6663d0b5545baa8";  //Your AppID
 export const handCashConnect = new HandCashConnect(AppId);
 
-export function useQuery() {
+export function UseQuery() {
   return new URLSearchParams(window.location.search); 
 }
 
-export function UrlAuthToken() {
-    const query = useQuery();
+//Gets an URL encoded parameter
+export function hUrlAuthToken() {
+    const query = UseQuery();
     return  query.get("authToken"); 
 }
 
-export const SaveWallet = (paymail, avatarURL, authToken) => {
-  console.log("svewallet", paymail, authToken);
-  localStorage.setItem("paymail", paymail);
-  localStorage.setItem("authToken", authToken);
-  localStorage.setItem("avatarUrl", avatarURL);
+
+//Save wallet data to LocalStorage
+export const hSaveWallet = (field, value) => {
+  let w = JSON.parse(localStorage.getItem("wallet"));
+
+  //Another authToken -> forget previous data
+  if (!w || ((field === "authToken") && (w[field]!==value))) {
+    w = {};  
+  }
+  w[field] = value;
+  localStorage.setItem("wallet", JSON.stringify(w));
 };
 
-
-export const GetWallet = (field) => {
-  switch (field) {
-    case "paymail":
-    case "authToken":
-    case "avatarUrl":
-      return localStorage.getItem(field);
-    default:
-      return "";
-  }
+//Retrieves data from localStorage to support the session
+export const hGetWallet = (field) => {
+  let w = JSON.parse(localStorage.getItem("wallet"));
+  return w && w[field] ? w[field] : null;
 }
 
-export function Exit() {
-  localStorage.removeItem("authToken");
-  localStorage.removeItem("paymail");
-  localStorage.removeItem("avatarUrl");
+//Cleans the session forgetting the localStorageData
+export function hExit() {
+  localStorage.removeItem("wallet");
   window.location.href="/"
  }
 
-export function fullhost () {
-  var url = window.location.href
-  var arr = url.split("/");
-  return arr[0] + "//" + arr[2];
-}
 
-export function EnsureAuthToken(){
-  let authToken = GetWallet("authToken");
-  if (! authToken) {  
+export function hEnsureAuthToken(){  
+  if (!hGetWallet("authToken")) {  
     // Use this field to redirect the user to the HandCash authorization screen.
     const redirectionLoginUrl = handCashConnect.getRedirectionUrl();
     window.location.href = redirectionLoginUrl;
   }
 }
 
-export function EnsurePaymail(){
-  let paymail = GetWallet("paymail");
-  let authToken = GetWallet("authToken");
-
-  //  console.log(paymail,authToken)
-  if (! paymail || paymail==="") {
-    const account = handCashConnect.getAccountFromAuthToken(authToken);
-
+export function hEnsurePaymail(){
+  hEnsureAuthToken();
+  
+  if (!hGetWallet("paymail")) {
+    const account = handCashConnect.getAccountFromAuthToken(hGetWallet("authToken"));
     return account.profile
       .getCurrentProfile()
       .then((res) => {
         console.log(res);
-          return(res);
+        return(res);
     })
     .catch((error) => {      
       console.error("Very likely the current authToken is invalid. Dropped!!", error);
-      Exit();
+      hExit();
     });
   }  else {
-    return new Promise(() => { resolve(paymail); });
+    return new Promise(() => { resolve(hGetWallet("paymail")); });
   }
 }
 
